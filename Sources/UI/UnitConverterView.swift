@@ -1,3 +1,4 @@
+import FossifyCommons
 import SwiftUI
 
 /// UnitConverterPickerActivity.
@@ -58,7 +59,7 @@ struct UnitConverterView: View {
         GeometryReader { geo in
             let landscape = geo.size.width > geo.size.height
             VStack(spacing: 0) {
-                TopBar(title: converter.name, onBack: nil, background: nil, tint: nil) {
+                TopBar(title: converter.name) {
                     if landscape {
                         IconButton(icon: "arrow.up.arrow.down") { swap() }
                     }
@@ -131,7 +132,7 @@ struct UnitConverterView: View {
         .frame(maxHeight: .infinity)
         .contentShape(Rectangle())
         .onTapGesture { picking = top ? .top : .bottom }
-        .onLongPressGesture { router.toast = Device.copy(text) }
+        .onLongPressGesture { router.toast = Launcher.copy(text) }
     }
 
     /// view_unit_converter.xml keypad.

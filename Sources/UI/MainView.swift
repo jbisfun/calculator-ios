@@ -1,3 +1,4 @@
+import FossifyCommons
 import Observation
 import SwiftUI
 
@@ -150,7 +151,7 @@ struct MainView: View {
 
     private func copy(_ value: String) {
         guard !value.isEmpty else { return }
-        router.toast = Device.copy(value)
+        router.toast = Launcher.copy(value)
     }
 
     private func showHistory() {
@@ -193,7 +194,7 @@ struct HistoryDialog: View {
                         onPick(item.result)
                         dismiss()
                     }
-                    .onLongPressGesture { router.toast = Device.copy(item.result) }
+                    .onLongPressGesture { router.toast = Launcher.copy(item.result) }
                 }
             }
             HStack(spacing: 24) {
