@@ -1,0 +1,36 @@
+# Fossify Calculator for iOS. Build with `idl build -c release` (see README.md).
+toolchain:
+  sdk_bundle: ~/.swiftpm/swift-sdks/darwin.artifactbundle
+  swiftly_bin: ~/.local/share/swiftly/bin
+  swiftc: swiftc
+  ldid: ldid
+  actool: idl-actool
+
+targets:
+  - name: FossifyCalculator
+    bundle_id: org.fossify.math.ios
+    version: "1.4.0"
+    build_number: "1"
+    min_ios: "17.0"
+    device_family: "1,2"
+    sources: [Sources]
+    resources: [Resources/Assets.xcassets]
+    frameworks: [SwiftUI, UIKit, Foundation]
+    swift_version: "5.0"
+    info:
+      CFBundleDisplayName: Calculator
+      UIApplicationSceneManifest:
+        UIApplicationSupportsMultipleScenes: false
+      UISupportedInterfaceOrientations:
+        - UIInterfaceOrientationPortrait
+        - UIInterfaceOrientationLandscapeLeft
+        - UIInterfaceOrientationLandscapeRight
+      UISupportedInterfaceOrientations~ipad:
+        - UIInterfaceOrientationPortrait
+        - UIInterfaceOrientationPortraitUpsideDown
+        - UIInterfaceOrientationLandscapeLeft
+        - UIInterfaceOrientationLandscapeRight
+    configurations:
+      debug:
+        entitlements:
+          get-task-allow: true
