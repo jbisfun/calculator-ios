@@ -61,6 +61,7 @@ struct MainView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
+                CloseAppButton()
                 Spacer()
                 IconButton(icon: "clock.arrow.circlepath") { showHistory() }
                 IconButton(icon: "ruler") { router.push(.unitConverterPicker) }

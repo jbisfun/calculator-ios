@@ -20,16 +20,18 @@ final class Router {
     func push(_ r: Route) { path.append(r) }
 }
 
-struct CalculatorApp: App {
+/// The whole app as one view: the standalone app's window content, and what
+/// the launcher presents.
+public struct CalculatorRoot: View {
     @State private var router = Router()
 
-    var body: some Scene {
-        WindowGroup {
-            RootView()
-                .environment(router)
-                .environment(Config.shared)
-                .fossifyTheme()
-        }
+    public init() {}
+
+    public var body: some View {
+        RootView()
+            .environment(router)
+            .environment(Config.shared)
+            .fossifyTheme()
     }
 }
 
@@ -61,6 +63,7 @@ struct RootView: View {
         .onAppear(perform: updateIdleTimer)
         .onChange(of: phase) { updateIdleTimer() }
         .onChange(of: config.preventPhoneFromSleeping) { updateIdleTimer() }
+        .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
     }
 
     /// FLAG_KEEP_SCREEN_ON while the app is in front.
